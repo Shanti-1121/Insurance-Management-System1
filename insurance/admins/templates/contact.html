@@ -1,0 +1,47 @@
+{% include "header.html" %}
+<title>CONTACT FORM</title>
+<style>
+  body {
+    background-color: #a6e0e9;
+    margin: 0;
+    padding: 0;
+  }
+  .custom-button {
+    background-color: Green;
+    color: white;
+    font-size: 20px;
+    padding: 10px 210px;
+  }
+  .custom-button:hover {
+    background-color: #0B87A6;
+  }
+  h1 {
+    font-family: cursive;
+  }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: blue;
+  }
+  .footer a {
+    margin: 0 10px;
+  }
+  .form-group {
+    font-size: 25px;
+    height: 200px;
+  }
+</style>
+<br><br>
+<center>
+  <h1 class='alert alert-success'>Send Us Your Valuable Suggestions</h1>
+  <hr><br><br><br>
+  <form method="POST" autocomplete="off">
+    {% csrf_token %}
+    <div class="form-group">
+      <p><h3>{{ form.as_p }}</h3></p><br>
+      <input type="submit" value="Click Send" class='btn btn-primary btn-lg custom-button'>
+    </div>
+  </form>
+</center>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include "footer.html" %}

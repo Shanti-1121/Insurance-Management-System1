@@ -1,0 +1,99 @@
+{% extends "adminbase.html" %}
+{% block content %}
+{% load static %}
+  <style>
+    body {
+      font-family:cursive;
+      margin: 0;
+      padding:0px;
+      background-color:#a6e0e9;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color:#fff;
+    }
+    th, td {
+      padding:5px;
+      text-align: left;
+      border-bottom: 1px solid blue;
+    }
+    th {background-color:grey;}
+    td:hover {background-color:orange;}
+    img {
+      height: 40px;
+      width: 40px;
+    }
+    .container {
+      max-width:1500px;
+      margin:-100px auto;
+      font-size:25px;
+      margin-top:-150px;
+    }
+    .panel {
+      margin-top:-120px; 
+    }
+    .panel-title {
+      text-align: center;
+      font-size:50px;
+      font-weight: bold;
+      margin-top: 0;
+      padding-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+    .btn-primary {
+      color: #fff;
+      background-color:blue;
+      border-color: #2e6da4;
+    }
+    .btn-danger {
+      color: #fff;
+      background-color:red;
+      border-color: #d43f3a;
+    }
+  </style>
+  <div class="container">
+    <div class="panel">
+      <h1 class="panel-title">Customers</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Serial.no</th>
+            <th>Name</th>
+            <th>Profile Picture</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for t in customers %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td> {{t.get_name}}</td>
+        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px"/></td>
+        <td>{{t.mobile}}</td>
+        <td>{{t.address}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'update-customer' t.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-customer' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<br><br><br><br><br><br>
+{% endblock content %}

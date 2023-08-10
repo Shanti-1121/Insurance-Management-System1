@@ -1,0 +1,58 @@
+{% extends 'adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+  <style media="screen">
+    input[type=text], select, input[type=number], input[type=password], textarea {
+      width:100%;
+      padding: 12px 20px;
+      margin:5px 0;
+      display: inline-block;
+      border: 1px solid blue;
+      border-radius:5px;
+      box-sizing: border-box;
+      font-size:20px;
+    }
+
+    button[type=submit] {
+      width: 100%;
+      background-color:green;
+      color:black;   
+    }
+    button[type=submit]:hover {background-color:DodgerBlue;}
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    .heading {
+      margin-top:-100px;
+      margin-bottom:20px;
+      font-size:50px;
+      text-align:center;
+    }
+    .left_area {margin-top:5px;}
+    label[for=course_name] {font-size:24px;}
+  </style>
+  <h6 class="heading">UPDATE POLICY</h6><hr>
+  <div>
+    <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:600px;margin-right:600px;">
+      {% csrf_token %}
+      <div class="form-group">
+        <br><label for="course_name">Category</label>
+        {% render_field policyForm.category class="form-control" placeholder="Life Insurance" %}
+
+        <label for="course_name">Policy Name</label>
+        {% render_field policyForm.policy_name class="form-control" placeholder="Jeevan Surbhi" %}
+
+        <label for="course_name">Sum Assurance</label>
+        {% render_field policyForm.sum_assurance class="form-control" placeholder="100000" %}
+
+        <label for="course_name">Premium</label>
+        {% render_field policyForm.premium class="form-control" placeholder="5000" %}
+
+        <label for="course_name">Tenure</label>
+        {% render_field policyForm.tenure class="form-control" placeholder="12" %}  
+      </div><br><br>
+      <button type="submit" style="font-size:30px; padding:10px border-box;">Update</button>
+    </form>
+  </div>
+{% endblock content %}

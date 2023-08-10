@@ -1,0 +1,75 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+{%load static%}
+  <style media="screen">
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    a:link {text-decoration:none;}
+    h6 {
+      text-align: center;
+      font-size:80px;
+    }
+    .container {margin-top:-250px;}
+    table {
+      width:80%;
+      border-collapse: collapse;
+      margin-top:50px;
+      margin-left:200px;
+    }
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid blue;
+      text-align:center;
+      background-color:grey;
+    }
+    td {background-color:#fff;}
+    td:hover {background-color:orange;}
+    .heading {
+      color:black
+      padding: 10px;
+      font-size:50px;
+      margin-bottom:10px;
+    }
+    .btn-danger {
+      background-color:#ff0000;
+      color:black;
+      padding: 5px 10px;
+    }
+    .btn-danger:hover {background-color:#3cb371;}
+  </style>
+</head>
+<br><br>
+<div class="container">
+    <h6 class="heading">Delete Policy</h6><hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Policy Name</th>
+          <th> Category</th>
+          <th> Sum Assurance</th>
+          <th> Premium</th>
+          <th> Tenure</th>
+          <th> Creation Date</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {% for t in policies %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td> {{t.policy_name}}</td>
+        <td> {{t.category}}</td>
+        <td> {{t.sum_assurance}}</td>
+        <td> {{t.premium}}</td>
+        <td> {{t.tenure}}</td>
+        <td>{{t.creation_date}}</td>
+        <td><a class="btn-danger" href="{% url 'delete-policy' t.id  %}">Delete</span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+<br><br><br><br><br><br>
+{% endblock content %}

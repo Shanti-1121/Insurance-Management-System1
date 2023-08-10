@@ -1,0 +1,80 @@
+{% extends 'customerbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+  <style media="screen">
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+  a:link {text-decoration:none;}
+  h6 {text-align: center;}
+  .container {margin-top:-250px;}
+  table {
+    width:80%;
+    border-collapse: collapse;
+    margin-top:300px;
+    margin-left:200px;
+  }
+  th,
+  td {
+    font-size:20px;
+    padding: 8px;
+    border: 1px solid green;
+    text-align:center;
+    background-color:cyan;
+  }
+  td {
+    background-color:grey;
+    font-size:20px;
+  }
+  td:hover {background-color:orange;}
+  .heading {
+    text-align:center;
+    color:black;
+    padding: 10px;
+    font-size:40px;
+    margin-bottom:90px;
+    margin-top:20px;
+  }
+  .btn-primary {
+    background-color:blue;
+    color:black;
+    padding: 5px 10px;
+  }
+  .btn-primary:hover {background-color:#3cb371;}
+  </style>
+</head>
+<h6 class="heading">Available Policies</h6>
+<div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Policy Name</th>
+          <th>Category</th>
+          <th>Sum Assurance</th>
+          <th>Premium</th>
+          <th>Tenure</th>
+          <th>Creation Date</th>
+          <th>Apply</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for t in policies %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ t.policy_name }}</td>
+          <td>{{ t.category }}</td> 
+          <td>{{ t.sum_assurance }}</td>
+          <td>{{ t.premium }}</td>
+          <td>{{ t.tenure }}</td>
+          <td>{{ t.creation_date }}</td>
+          <td><a class="btn-primary" href="{% url 'apply' t.id %}">Apply</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+<br><br><br><br><br><br>
+{% endblock content %}

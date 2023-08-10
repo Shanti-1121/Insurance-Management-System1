@@ -1,0 +1,57 @@
+{% extends 'adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+  <style media="screen">
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    input[type=text], select, input[type=number], input[type=password], textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin:18px 10px;
+      display: inline-block;
+      border: 1px solid blue;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size:25px;
+    }
+    input[type=submit] {
+      width: 100%;
+      background-color: green;
+      color: white;
+      padding: 20px 200px;
+      margin:18px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    input[type=submit]:hover {background-color:#0B87A6;}
+    label #sidebar_btn {
+      z-index: 1;
+      color: #fff;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      padding-left: 60px;
+      margin-top: 15px;
+      font-size: 20px;
+      transition: 0.5s;
+      transition-property: color;
+    }
+    .left_area {margin-top:10px;}
+  </style>
+  <div style="margin-top:-150px;">
+    <h3 style="text-align:center; font-size:50px;">Update Question & Admin Comment</h3>
+    <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+      <label for="course_name"><h2>Question</h2></label>
+      {% render_field questionForm.description class="form-control" %}
+      <label for="course_name"><h2>Your Comment</h2></label>
+      <textarea name="admin_comment" id="admin_comment" class="form-control"></textarea>
+      <input type="submit" value="Update">
+    </form>
+  </div>
+{% endblock content %}

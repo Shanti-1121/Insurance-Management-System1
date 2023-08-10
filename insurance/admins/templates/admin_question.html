@@ -1,0 +1,99 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+  <style>
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    a:link {
+      text-decoration: none;
+    }
+    .container {
+      margin:-200px 10px;
+    }
+    .panel {
+      max-width: 100%;
+      overflow: auto;
+    }
+    .panel-heading {
+      color: black;
+      padding:-10px;
+      text-align: center;
+      font-size:60px;
+    }
+    table {
+      margin:10px 200px;
+      margin-top:-50px;
+      width:90%;
+      max-width:80%;
+      border:2px solid blue;
+    }
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid black;
+      background-color:#fff;
+    }
+    th {background-color:grey;}
+    td:hover {background-color:orange;}
+    .btn {
+      display: inline-block;
+      padding:10px 10px;
+      font-size:20px;
+      background-color:blue;
+      color: white;
+      border: none;
+      border-radius:5px;
+      cursor: pointer;
+    }
+    .btn-xs {
+      padding:2px 5px;
+      font-size:15px;
+      line-height: 1.5;
+    }
+    .glyphicon {
+      font-family: 'Glyphicons Halflings';
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .glyphicon-edit:before {content:"\270f";}
+  </style>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Questions</h6>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Serial No.</th>
+            <th>Customer Name</th>
+            <th>Problem</th>
+            <th>Admin Comment</th>
+            <th>Asked Date</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        {% for t in questions %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ t.customer }}</td>
+          <td>{{ t.description }}</td>
+          <td>{{ t.admin_comment }}</td>
+          <td>{{ t.asked_date }}</td>
+          <td>
+            <a class="btn btn-danger btn-xs" href="{% url 'update-question' t.id %}">
+              <span class="glyphicon glyphicon-edit"></span>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+{% endblock content %}

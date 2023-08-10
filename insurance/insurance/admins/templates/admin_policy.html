@@ -1,0 +1,125 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body {
+        font-family: cursive;
+        background-color:#a6e0e9;
+    }
+    a:link {text-decoration:none;}
+    .container {
+        max-width: 1200px;
+        margin:-10px auto;
+        margin-top:40px;
+        margin-bottom:-150px;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    .col-md-4 {
+        flex-basis: 31%;
+        padding: 10px;
+    }
+    .card {
+        background-color:#fff;
+        color:black;
+        border-radius: 5px;
+        box-shadow: 0 1px 2.94px 0.06px #0B87A6;
+        transition: all 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        background-color:#0B87A6;
+    }
+    .card-block {
+        padding:25px;
+        text-align:center;
+        margin-top:-30px;
+    }
+    .card a {
+        margin-bottom: 20px;
+        font-size:25px;
+    }
+    .card i {
+        font-size:30px;
+        float: left;
+    }
+    .text-right {text-align: right;}
+</style>
+<h1 style="text-align: center; font-size:50px;  margin-top:-100px;">Policy</h1><hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-view-policy" style="text-decoration: none;color:black;">View Policy</a>
+                    <h2 class="text-right"><i class="fas fa-eye"></i></h2><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-add-policy" style="text-decoration: none;color:black;">Add Policy</a>
+                    <h2 class="text-right"><i class="fas fa-plus"></i></h2><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-update-policy" style="text-decoration: none;color:black;">Update Policy</a>
+                    <h2 class="text-right"><i class="fas fa-edit"></i></h2><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-delete-policy" style="text-decoration: none;color:black;">Delete Policy</a>
+                    <h2 class="text-right"><i class="fas fa-trash"></i></h2><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-view-policy-holder" style="text-decoration: none;color:black;">Total Applied Policy Holder</a>
+                    <h2 class="text-right"><i class="fas fa-user-cog"></i><span>{{ total_policy_holder }}</span></h2><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-view-approved-policy-holder" style="text-decoration: none;color:black;">Approved Policy Holder</a>
+                    <h2 class="text-right"><i class="fas fa-user-check"></i><span>{{ approved_policy_holder }}</span></h2><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-view-disapproved-policy-holder" style="text-decoration: none;color:black;">Disapproved Policy Holder</a>
+                    <h2 class="text-right"><i class="fas fa-user-times"></i><span>{{ disapproved_policy_holder }}</span></h2><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block"><br><br>
+                    <a href="admin-view-waiting-policy-holder" style="text-decoration: none;color:black;">Policy Holder Waiting For Approval</a>
+                    <h2 class="text-right"><i class="fas fa-user-clock"></i><span>{{ waiting_policy_holder }}</span></h2><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

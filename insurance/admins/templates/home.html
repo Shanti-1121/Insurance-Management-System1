@@ -1,0 +1,130 @@
+{% include "header.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Home Page</title>
+    <style type="text/css">
+        body {
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family:cursive;
+            background-color:#3E8EDE;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:70vh;
+        }
+        .headline {
+            font-size: 48px;
+            font-weight: bold;
+            color:color;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px;
+            max-width:700px;
+            margin-top:10px;
+        }
+        .dashboard-box {
+            width: 200px;
+            height: 200px;
+            background-color: #ff7b00;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .dashboard-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+        .excitement-text {
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-top:20px;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+        .cta-button {
+           padding: 16px 40px;
+            background-color: #ff952b;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            background-color: #ff7b00;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+      <!--  <div class="headline">"INSURANCE MANAGEMENT SYSTEM"</div> -->
+        <p class="excitement-text">"Protecting what matters most, because your safety is our priority"</p>
+        <div class="dashboard">
+            <div class="dashboard-box" onclick="navigateToService('auto')">Auto Insurance</div>
+            <div class="dashboard-box" onclick="navigateToService('home')">Home Insurance</div>
+            <div class="dashboard-box" onclick="navigateToService('life')">Life Insurance</div>
+            <div class="dashboard-box" onclick="navigateToService('car')">car Insurance</div>
+            <div class="dashboard-box" onclick="navigateToService('Health')">Health Insurance</div>
+            <div class="dashboard-box" onclick="navigateToService('Property')">Property Insurance</div>
+        </div>
+        <div class="excitement-text">
+            <p>Discover the best insurance solutions tailored for you!</p>
+            <p>Our experienced team is ready to assist you in protecting your future.</p>
+        </div>
+        <p>for more information, create an account and explore more from our website!</p>
+        <a href="/customer/customersignup" class="cta-button">Login</a>
+    </div>
+
+    <script>
+        function navigateToService(serviceType) {
+            switch (serviceType) {
+                case 'auto':
+                    window.location.href = "/customer/customerlogin";
+                    break;
+                case 'home':
+                    window.location.href = "/customer/customerlogin";
+                    break;
+                case 'life':
+                    window.location.href = "/customer/customerlogin";
+                    break;
+                case 'car':
+                    window.location.href = "/customer/customerlogin";
+                    break;
+                case 'Health':
+                    window.location.href = "/customer/customerlogin";
+                    break;
+                case 'Property':
+                    window.location.href = "/customer/customerlogin";
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

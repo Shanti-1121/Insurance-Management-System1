@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+    body {
+      margin: 0;
+      padding: 10;
+      font-family:cursive;
+      background:#b2b2b2;
+    }
+    header {
+      position: fixed;
+      background:black;
+      padding: 20px;
+      width: 100%;
+      z-index: 1;
+    }
+    .left_area h3 {
+      color:white;
+      margin: 0px;
+      text-transform: uppercase;
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .left_area span {color:black;}
+    .logout_btn {
+      padding: 5px 10px;
+      background:green;
+      text-decoration: none;
+      float: right;
+      margin-top: -30px;
+      margin-right: 40px;
+      border-radius: 2px;
+      font-size:25px;
+      font-weight: 600;
+      color:black;
+      transition: 0.3s;
+    }
+    .logout_btn:hover {background: #0B87A6;}
+    .sidebar {
+      background:black;
+      margin-top: 70px;
+      padding-top: 30px;
+      position: fixed;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      transition: 0.5s;
+      transition-property: left;
+    }
+    .sidebar .profile_image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .sidebar h4 {
+      color:black;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 20px;
+      background:black
+    }
+    .sidebar a {
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      line-height: 40px;
+      text-decoration: none;
+      padding-left: 20px;
+      box-sizing: border-box;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    .sidebar a:hover {background:green;}
+    .sidebar i {padding-right: 10px;}
+    label #sidebar_btn {
+      z-index: 1;
+      color:black;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      font-size: 20px;
+      margin: 5px 50px;
+      transition: 0.3s;
+      transition-property: color;
+    }
+    .content {margin-left:250px;  background-color:#a6e0e9;  transition:0.5s;}
+    #check:checked~.content {margin-left:600px;}
+    #check {display:none;}
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="check">
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Insurance Management</h3>
+    </div>
+    <div class="right_area">
+      <a href="/logout" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <div class="sidebar">
+    <center>
+      <img src="{% static customer.profile_pic.url %}" class="profile_image" alt="">
+      <h4>{{ request.user.first_name }}</h4>
+      <h4 style="color: rgb(255, 255, 255);">Customer</h4><br><br>
+    </center>
+    <ul>
+      <hr><li><a href="/customer/customer-dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li><br>
+      <hr><li><a href="/customer/apply-policy"><i class="fab fa-product-hunt"></i><span>Apply Policy</span></a></li><br>
+      <hr><li><a href="/customer/history"><i class="fas fa-history"></i><span>History</span></a></li><br>
+      <hr><li><a href="/customer/ask-question"><i class="fas fa-question-circle"></i><span>Ask Question</span></a></li><br>
+      <hr><br><li><a href="/customer/question-history"><i class="fas fa-sync-alt"></i><span>Question History</span></a></li><hr>
+    </ul>
+  </div>
+  <div class="content">
+    <br><br><br><br><br>
+    {% block content %}
+    {% endblock %}
+    <br><br><br>
+  </div>
+</body>
+</html>

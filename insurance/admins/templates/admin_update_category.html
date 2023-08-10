@@ -1,0 +1,116 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+  <style>
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    a:link {text-decoration:none;}
+    h6 {text-align:center;}
+    .container {
+      margin: 20px;
+      margin-top:-150px;
+    }
+    .panel {
+      margin-bottom: 10px;
+      max-width: 100%;
+      overflow: auto;
+    }
+    .panel-heading {
+      color: black;
+      padding: 10px;
+    }
+    .panel-title {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 40px;
+      text-align: center;
+    }
+    table {
+      width:90%;
+      max-width:100%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      border: 2px solid blue; 
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid black;
+      background-color: #fff;
+    }
+    th {background-color:grey;}
+    td:hover {background-color:orange;}
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.5;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid bold;
+      border-radius: 14px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .btn-primary {
+      color: #fff;
+      background-color: blue;
+      border-color: #2e6da4;
+    }
+    .btn-xs {
+      padding: 1px 5px;
+      font-size: 20px;
+      line-height: 1.5;
+      border-radius: 2px;
+    }
+    .glyphicon {
+      position: relative;
+      top: 0px;
+      display: inline-block;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .glyphicon-edit:before {content:"\270f";}
+  </style>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Update Category</h6><hr>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Serial No.</th>
+            <th>Category Name</th>
+            <th>Creation Date</th>
+            <th>Update Category</th>
+          </tr>
+        </thead>
+        {% for t in categories %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ t.category_name }}</td>
+          <td>{{ t.creation_date }}</td>
+          <td>
+            <a class="btn btn-primary btn-xs" href="{% url 'update-category' t.id %}">
+              <span class="glyphicon glyphicon-edit"></span>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+{% endblock content %}

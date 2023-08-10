@@ -1,0 +1,24 @@
+{% include "header.html" %}
+<title>LOGIN PAGE</title>
+  <style>
+    body {background-color:#a6e0e9;  margin:0}
+    .log-form {width:60%;  min-width:320px;  max-width:600px;  height:400px;  background:#fff;  position:absolute;  top:60%;  left:50%;  transform:translate(-50%,-50%);  
+       padding:2em;  display:flex;  flex-direction:column;  justify-content:center;  align-items:center;}
+    h2 {color:#333;  font-family:cursive;  font-size:1.5em;  text-transform:uppercase;  padding:0;  margin:0 0 1em 0;  font-weight:700;}  
+    input {width:100%;  margin-bottom:1em;  padding:.75em;  font-size:1.2em;  border:square;  border-bottom:1px solid #eaeaea;  color:#757575;  outline:none;}
+    .btn {display:inline-block;  background:#4CAF50;  border:1px solid #1f6b75;  padding:.75em 3em;  color:white;  margin-top:1em;  cursor:pointer;}
+    .btn:active {background:Grey;  box-shadow:inset 0 1px 1px rgba(0,255,0,0.3);}
+  </style>
+  <div class="log-form">
+    <h2>Login to Your Account</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn"><h2><b>Login</b></h2></button>
+    </form>
+  </div>

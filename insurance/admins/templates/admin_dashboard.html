@@ -1,0 +1,91 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+{% load static %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: cursive;
+            background-color: #a6e0e9;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom:-5cm;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px green;
+            padding: 10px;
+            margin: 10px;
+            flex: 0 0 calc(33.33% - 20px);
+            max-width: calc(33.33% - 20px);
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .card:hover {
+            background-color:#0B87A6;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 1.0px;
+        }
+        .card-link {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+    <h1 style="text-align: center; font-size:50px;  margin-top:-150px;">Admin Dashboard</h1><hr>
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Total Registered User</h2>
+            <p class="card-content">{{ total_user }}</p>
+            <a href="admin-view-customer" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Listed Policies</h2>
+            <p class="card-content">{{ total_policy }}</p>
+            <a href="admin-view-policy" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Listed Categories</h2>
+            <p class="card-content">{{ total_category }}</p>
+            <a href="admin-view-category" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Total Question</h2>
+            <p class="card-content">{{ total_question }}</p>
+            <a href="admin-question" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Total Applied Policy Holder</h2>
+            <p class="card-content">{{ total_policy_holder }}</p>
+            <a href="admin-view-policy-holder" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Approved Policy Holder</h2>
+            <p class="card-content">{{ approved_policy_holder }}</p>
+            <a href="admin-view-approved-policy-holder" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Disapproved Policy Holder</h2>
+            <p class="card-content">{{ disapproved_policy_holder }}</p>
+            <a href="admin-view-disapproved-policy-holder" class="card-link">View Details</a>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Policy Holder Waiting For Approval</h2>
+            <p class="card-content">{{ waiting_policy_holder }}</p>
+            <a href="admin-view-waiting-policy-holder" class="card-link">View Details</a>
+        </div>
+    </div>
+    <br><br><br><br><br><br>
+{% endblock content %}

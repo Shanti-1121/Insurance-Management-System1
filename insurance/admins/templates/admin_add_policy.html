@@ -1,0 +1,69 @@
+{% extends 'adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+  body {
+    font-family: cursive;
+    background-color: #a6e0e9;
+  }
+  a:link {text-decoration:none;}
+  .container {
+    max-width: 600px;
+    margin: 200px auto;
+    margin-top: -140px;
+  }
+  .form-group {
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 20px 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-sizing:50px 20px;;
+  }
+  button {
+    width: 100%;
+    padding: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    color:black;
+    background-color:green;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+<div class="container">
+  <h1 style="text-align:center; color:black; font-size:50px;">ADD POLICY</h1><hr>
+  <form method="POST" autocomplete="off">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="category">Category</label>
+      {% render_field policyForm.category class="form-control" placeholder="Life Insurance" %}
+
+      <label for="policy_name">Policy Name</label>
+      {% render_field policyForm.policy_name class="form-control" placeholder="Jeevan Surbhi" %}
+
+      <label for="sum_assurance">Sum Assurance</label>
+      {% render_field policyForm.sum_assurance class="form-control" placeholder="100000" %}
+
+      <label for="premium">Premium</label>
+      {% render_field policyForm.premium class="form-control" placeholder="5000" %}
+
+      <label for="tenure">Tenure</label>
+      {% render_field policyForm.tenure class="form-control" placeholder="12" %}
+    </div>
+    <button type="submit" style="font-size: 20px; padding: 20px 40px;">ADD</button>
+  </form>
+</div>
+{% endblock content %}

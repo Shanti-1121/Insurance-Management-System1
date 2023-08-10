@@ -1,0 +1,53 @@
+    {% include "header.html" %}
+    <title>CUSTOMER SIGNUP</title>
+    <style>
+        body{
+            background:#a6e0e9;  
+            font-family:cursive;  
+            margin:0;
+        }
+        .container{
+            width:600px;  
+            margin:1cm auto;  
+            padding:50px;  
+        }
+        .text-center{
+            text-align:center;
+            color:black;
+            font-size:30px;
+        }
+        .form-control{
+            width:100%;  
+            padding:10px;  
+            margin-bottom:10px;  
+            box-sizing:border-box
+        }
+        .btn{
+            display:block;  
+            margin:0 auto;  
+            background:green;  
+            color:#fff;  
+            padding:10px 20px;  
+            border:none;  
+            cursor:pointer}
+        .btn:hover{background:darkgreen}
+    </style>
+    <div class="container">
+        <h3 class="text-center">CUSTOMER SIGNUP</h3>
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="username" required class="form-control" placeholder="Username"><br><br>
+            <input type="password" name="password" required class="form-control" placeholder="Password"><br><br>
+            <input type="text" name="first_name" required class="form-control" placeholder="First Name"><br><br>
+            <input type="text" name="last_name" required class="form-control" placeholder="Last Name"><br><br>
+            <input type="tel" name="mobile" required class="form-control" placeholder="Mobile"><br><br>
+            <input type="text" name="address" required class="form-control" placeholder="Address"><br><br>
+            <label>Profile Picture<input type="file" name="profile_pic" required class="form-control" placeholder="Profile Picture"></label><br><br>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        
+        </form>
+    </div>
+    
+
+
+

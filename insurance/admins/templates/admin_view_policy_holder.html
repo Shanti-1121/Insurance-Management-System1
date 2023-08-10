@@ -1,0 +1,88 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+{%load static%}
+<head>
+  <style media="screen">
+    body {
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    a:link {text-decoration:none;}
+    h6 {
+      text-align: center;
+      font-size:80px;
+    }
+    .container {margin-top:-250px;}
+    table {
+      width:80%;
+      border-collapse: collapse;
+      margin-top:50px;
+      margin-left:200px;
+    }
+    th,
+    td {
+      font-size:20px;
+      padding: 8px;
+      border: 1px solid blue;
+      text-align:center;
+      background-color:grey;
+    }
+    td {
+      background-color:#fff;
+      font-size:20px;
+    }
+    td:hover {background-color:orange;}
+    .heading {
+      color:black;
+      padding:5px;
+      font-size:50px;
+      margin-bottom:10px;
+    }
+    .btn-primary {
+      background-color:blue;
+      color:black;
+      padding: 5px 10px;
+    }
+    .btn-danger{
+      background-color:red;
+      padding: 5px 15px;
+    }
+    .btn:hover {background-color:#3cb371;}
+  </style>
+</head>
+<br><br>
+<div class="container">
+    <h6 class="heading">Policy Holder Record</h6><hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>Policy Name</th>
+          <th>Customer Name</th>
+          <th> Applied Date</th>
+          <th>Status</th>
+          <th class="text-right">Action</th>
+        </tr>
+      </thead>
+      {% for t in policyrecords %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td> {{t.Policy}}</td>
+        <td> {{t.customer}}</td>
+        <td>{{t.creation_date}}</td>
+        <td>{{t.status}}</td>
+        {% if t.status == 'Pending' %}
+          <td class="text-right">
+            <button class="btn btn-primary badge-pill" style="width: 120px;"><a  style="text-decoration: none;color: white;" href="{% url 'approve-request' t.id  %}">Approve</a> </button>
+            <button class="btn btn-danger badge-pill" style="width: 80px;"><a  style="text-decoration: none;color:white;" href="{% url 'reject-request' t.id  %}">Reject</a> </button>
+          </td>             
+        {% else %}
+          <td class="text-right">
+          <span style="color:black;font-size:20px;" class="label success">{{t.status}}</span></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+<br><br><br><br><br><br>
+{% endblock content %}

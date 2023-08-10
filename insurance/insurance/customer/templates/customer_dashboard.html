@@ -1,0 +1,76 @@
+{% extends 'customerbase.html' %}
+{% block content %}
+{%load static%}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Customer Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: cursive;
+      background-color: #a6e0e9;
+    }
+    .container {
+      margin-top: 200px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      margin: 10px;
+      flex: 0 0 calc(33.33% - 20px);
+      max-width: calc(33.33% - 20px);
+      text-align: center;
+    }
+    .card:hover {background-color:#0B87A6;}
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-content {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 1.0px;
+    }
+    .card-link {
+      color: black;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2 class="card-title">Available Policy</h2>
+      <p class="card-content">{{ available_policy }}</p>
+      <a href="apply-policy" class="card-link">View Details</a>
+    </div>
+    <div class="card">
+      <h2 class="card-title">Applied Policy</h2>
+      <p class="card-content">{{ applied_policy }}</p>
+      <a href="history" class="card-link">View Details</a>
+    </div>
+    <div class="card">
+      <h2 class="card-title">Policy Categories</h2>
+      <p class="card-content">{{ total_category }}</p>
+      <a href="ask-question" class="card-link">View Details</a>
+    </div>
+    <div class="card">
+      <h2 class="card-title">Total Question Asked</h2>
+      <p class="card-content">{{ total_question }}</p>
+      <a href="question-history" class="card-link">View Details</a>
+    </div>
+  </div>
+</body>
+
+</html>
+{% endblock content %}

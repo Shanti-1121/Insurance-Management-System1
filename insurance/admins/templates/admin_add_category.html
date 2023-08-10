@@ -1,0 +1,61 @@
+{% extends 'adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+  <style>
+    body {
+      font-family:cursive;
+      background-color:#a6e0e9;
+    }
+    a:link {
+      text-decoration:none;
+    }
+    h2 {
+      text-align:center;
+      color:black;
+      font-size:40px;
+    }
+    .form-group {
+      margin-bottom:30px;
+      font-size:20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      padding:20px;
+      font-size:20px;
+      border: 1px solid grey;
+      border-radius:3px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 900px;
+      font-size:20px;
+      background-color:green;
+      color: white;
+      border: none;
+      border-radius:-5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color:#0B87A6;
+    }
+    form {
+      margin: 100px;
+      margin-top:10px;
+    }
+  </style>
+  <h2>Add Category</h2><hr>
+  <form method="POST" autocomplete="off">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="course_name">Category Name</label>
+      {% render_field categoryForm.category_name placeholder="Life Insurance" %}
+    </div>
+    <button type="submit">ADD</button>
+  </form>
+{% endblock content %}

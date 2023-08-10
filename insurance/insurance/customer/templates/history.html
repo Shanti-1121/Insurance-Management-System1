@@ -1,0 +1,72 @@
+{% extends 'customerbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+  <title>History</title>
+  <style>
+    a:link {
+      text-decoration: none;
+    }
+    body {
+      background-color: #a6e0e9;
+      font-family: cursive;
+    }
+
+    h1 {
+      text-align: center;
+      color:black;
+    }
+
+    .container {
+      margin: 100px;
+      
+    }
+
+    table {
+      border-collapse: collapse;
+      width:80%;
+      margin-left:140px;
+    }
+
+    th, td {
+      font-size:20px;
+      padding:10px 50px;
+      text-align: left;
+      border: 1px solid blue;
+      background-color:cyan;
+    }
+    td {background-color:grey; }
+    td:hover {background-color:orange;}
+  </style>
+</head>
+<body>
+  <div class="container" style="margin-top:50px;">
+    <div class="panel panel-primary">
+        <h1 class="panel-title">History</h1>
+      </div>
+      <table>
+        <table class="table" style="border-collapse: collapse; border: 1px solid #fff;">
+        <thead>
+          <tr>
+            <th>Serial No.</th>
+            <th>Policy Name</th>
+            <th>Applied Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in policies %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ t.Policy }}</td>
+            <td>{{ t.creation_date }}</td>
+            <td>{{ t.status }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock content %}
